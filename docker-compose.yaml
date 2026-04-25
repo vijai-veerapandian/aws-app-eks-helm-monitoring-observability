@@ -8,6 +8,7 @@ services:
     container_name: backend-app
     ports:
       - "3000:3000"
+      
     environment:
         - DB_HOST=postgres-db
         - DB_PORT=5432
