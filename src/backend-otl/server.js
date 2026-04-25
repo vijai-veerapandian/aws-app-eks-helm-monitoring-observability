@@ -10,7 +10,7 @@ app.use(express.json());
 
 // 🔹 Database configuration (Docker-friendly)
 const client = new Client({
-  host: process.env.DB_HOST || "db",   // container name
+  host: process.env.DB_HOST || "postgres_db",   // container name
   user: process.env.DB_USER || "postgres",
   password: process.env.DB_PASSWORD || "postgres",
   database: process.env.DB_NAME || "postgres",
