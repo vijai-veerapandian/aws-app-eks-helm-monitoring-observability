@@ -1,0 +1,29 @@
+networks:
+  default:
+    driver: bridge
+    name: aws-environment
+services:
+  backend: 
+    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/backend-app:${IMAGE_TAG}
+    container_name: backend-app
+    ports:
+      - "3000:3000"
+      
+    environment:
+        - DB_HOST=postgres-db
+        - DB_PORT=5432
+        - DB_USER=postgres
+        - DB_PASSWORD=postgres
+        - DB_NAME=postgres
+    depends_on:
+      - postgres-db
+  frontend:
+    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/frontend-app:${IMAGE_TAG}
+    container_name: frontend-app
+    ports:
+      - "8080:80"
+  postgres-db:  
+    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/postgres-db:${IMAGE_TAG}
+    container_name: postgres-db
+    ports:
+      - "5432:5432"
