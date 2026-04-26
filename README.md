@@ -19,7 +19,7 @@ AWS_REGION=your-region (e.g. us-east-1)
 # Image Tag (from GitHub Actions) 
 IMAGE_TAG=<enter github commit id> (or take it from ECR)
 
-🔹 Important Notes
+# Important Notes
 .env is NOT committed (listed in .gitignore)
 Each team member uses their own AWS account
 Do NOT store AWS secrets here
