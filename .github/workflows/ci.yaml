@@ -41,21 +41,21 @@ jobs:
       # 🔹 Build Backend Image
       - name: Build and Push Backend Image
         run: |
-          docker build -t backend-app ./src/backend-otl/
+          docker build -t backend-app CI/ops/backend-otl/
           docker tag backend-app:latest $ECR_REGISTRY/backend-app:$IMAGE_TAG
           docker push $ECR_REGISTRY/backend-app:$IMAGE_TAG
 
       # 🔹 Build Frontend Image
       - name: Build Frontend Image
         run: |
-          docker build -t frontend-app ./src/frontend-otl/
+          docker build -t frontend-app CI/ops/frontend-otl/
           docker tag frontend-app:latest $ECR_REGISTRY/frontend-app:$IMAGE_TAG
           docker push $ECR_REGISTRY/frontend-app:$IMAGE_TAG
 
       # 🔹 Build DB Image (optional but included for completeness)
       - name: Build DB Image
         run: |
-          docker build -t postgres-db ./src/db-otl/
+          docker build -t postgres-db CI/ops/db-otl/
           docker tag postgres-db:latest $ECR_REGISTRY/postgres-db:$IMAGE_TAG
           docker push $ECR_REGISTRY/postgres-db:$IMAGE_TAG
 
